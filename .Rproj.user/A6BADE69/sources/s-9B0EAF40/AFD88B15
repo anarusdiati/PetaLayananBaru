@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584529552976.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AFD88B15",
+    "lastKnownWriteTime" : 7310028807570858028,
+    "last_content_update" : 1584529552976,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "70B0A97A",
+        "caption" : "RSlayanan",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=RSlayanan&cache_key=70B0A97A",
+        "displayedObservations" : 2878,
+        "environment" : "",
+        "expression" : "RSlayanan",
+        "object" : "RSlayanan",
+        "preview" : 0,
+        "totalObservations" : 2878,
+        "variables" : 179
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

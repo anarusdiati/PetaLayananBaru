@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584530913166.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F931081F",
+    "lastKnownWriteTime" : 1584529345,
+    "last_content_update" : 1584530913166,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "f12bb9127eca44dbad4927371c1c40df",
+        "name" : "provinsiRefs",
+        "title" : "provinsiRefs"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

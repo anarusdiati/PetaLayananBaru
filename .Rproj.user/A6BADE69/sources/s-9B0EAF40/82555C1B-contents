@@ -1,0 +1,38 @@
+data.proc <- RSlayanan %>% select(Layanan = `Pelayanan farmasi`, NamaRS, JenisRS, KelasRS, address, Penyelenggara, Provinsi, KabKota, links, lon, lat)
+
+data.spatial <- st_as_sf(data.proc, coords = c("lon", "lat"), 
+                         crs = 4326, agr = "constant")
+
+labels <- sprintf(
+  "<strong>%s</strong><br/><em>%s %s</em><br/>%s: %s<br/>%s: %s<br/>%s: %s<br/><a href='%s'>Buka di Google Map</a>",
+  toupper(data.proc$NamaRS), data.proc$JenisRS, paste("Kelas", data.proc$KelasRS), "ALAMAT", data.proc$address, "PROVINSI", data.proc$Provinsi, "PENYELENGGARA", data.proc$Penyelenggara, data.proc$links
+) %>% lapply(htmltools::HTML)
+
+by.col <- "Tidak"
+
+proxy <- leaflet(data = data.spatial) %>%
+  addTiles()
+
+  if (by.col != "Tidak") {bubble.pal <- colorFactor(pal, domain = unique(data.proc[, by.col]))}
+
+proxy <- proxy %>%
+  addCircleMarkers(
+    layerId = data.spatial$Nama_RS,
+    radius = data.spatial$Layanan*8,
+    color = if (by.col != "Tidak") bubble.pal(data.proc[, by.col]) else "#dc3977",
+    popup = labels,
+    stroke = T,
+    weight = 1,
+    fillOpacity = 0.9,
+    group = "Circle Markers"
+  )
+
+if (by.col != "Tidak") {
+  proxy <- proxy %>%
+    addLegend(
+      position = "bottomright",
+      pal = bubble.pal, values = data.proc[, by.col],
+      group = "Circle Markers"
+    )
+}
+proxy

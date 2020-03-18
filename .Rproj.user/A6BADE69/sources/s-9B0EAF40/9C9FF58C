@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584529362277.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "528100159",
+    "id" : "9C9FF58C",
+    "lastKnownWriteTime" : 1584529127,
+    "last_content_update" : 1584529127,
+    "path" : "D:/Projects/PetaLayananBaru/reference.R",
+    "project_path" : "reference.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584530484485.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "15F84433",
+    "lastKnownWriteTime" : 8389754706581218143,
+    "last_content_update" : 1584530484485,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "88942e8dfc1149378b2d5e738fbeaa99",
+        "name" : "ownerRS",
+        "title" : "ownerRS"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}
