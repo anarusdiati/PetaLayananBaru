@@ -1,0 +1,395 @@
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("fonts/firasans-light-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/firasans-regular-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("fonts/firasans-medium-webfont.woff");
+}
+
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/firasans-medium-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 900;
+  src: url("fonts/firasans-bold-webfont.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 100;
+  src: url("fonts/Gustan-Thin.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 200;
+  src: url("fonts/Gustan-Light.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Gustan-Medium.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 500;
+  src: url("fonts/Gustan-Bold.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 600;
+  src: url("fonts/Gustan-Extrabold.woff");
+}
+
+@font-face {
+  font-family: "Gustan";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/Gustan-Black.woff");
+}
+
+h1, h2, h3, h4, h5, h6, a {
+   line-height: 1.115em;
+   padding-top: 10px;
+   margin-top: 0px;
+   margin-bottom: 15px;
+}
+
+h1 {
+   font-family: "Gustan",Helvetica,Arial,sans-serif;
+   font-size: 42px;
+   font-weight: 100;
+   color: #414042;
+   margin-bottom: 30px;
+}
+
+h2 {
+   font-family: "Gustan",Helvetica,Arial,sans-serif;
+   font-size: 31.3667px;
+   font-weight: 100;
+   color: #414042;
+}
+
+h3 {
+   font-family: "Gustan",Helvetica,Arial,sans-serif;
+   font-size: 25px;
+   font-weight: 100;
+   color: #414042;
+}
+
+p.intro {
+   font-family: 'Gustan', Helvetica, Arial, sans-serif;
+   font-weight: 200;
+   font-size: 19px;
+   color: #414042;
+}
+
+.intro-divider {
+   height: 6px;
+   background: transparent linear-gradient(to right, #157BA3 0%, #96D602 100%) repeat scroll 0% 0%;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+h4 {
+   font-family: "Gustan",Helvetica,Arial,sans-serif;
+   font-size: 17.37px;
+   font-weight: 600;
+   color: #414042;
+}
+
+h5 {
+   font-family: "Fira Sans",Helvetica,Arial,sans-serif;
+   font-size: 15px;
+   font-weight: 900;
+   color: #000000;
+}
+
+h6 {
+   font-family: "Fira Sans",Helvetica,Arial,sans-serif;
+   font-size: 14.3px;
+   font-weight: 500;
+   color: #000000;
+}
+
+body {
+   font-family: "Fira Sans",Helvetica,Arial,sans-serif;
+   font-size: 14px;
+   font-weight: 300;
+   color: #000000;
+}
+
+.small {
+   font-size: 12px;
+}
+
+.readmore {
+   font-family: "Gustan",Helvetica,Arial,sans-serif;
+   font-size: 12px;
+   font-weight: 700;
+   color: #414042;
+}
+
+.dask-topbar {
+   height: 6px;
+   background: transparent linear-gradient(to right, #89216B 0%, #DA4453 100%) repeat scroll 0% 0%;
+}
+.dask-whitebar {
+   border-color: transparent;
+   height: 12px;
+   background: transparent;
+}
+
+.dask-separator {
+   height: 6px;
+   background: transparent linear-gradient(to bottom, #D3D7DE 0%, #FFFFFF 100%) repeat scroll 0% 0%;
+}
+
+.dask-brand {
+   float: none;
+   height: auto;
+   padding-top: 26px;
+   padding-bottom: 24px;
+}
+
+
+
+a.dask-brand {
+   padding-left: 15px;
+}
+
+.dask-text-block {
+   max-width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.dask-footer {
+   background: #4E4E4E;
+   margin-top: 25px;
+}
+
+.dask-footer-container {
+   padding-top: 35px;
+   margin: auto;
+   font-size: 75%;
+   line-height: 2em;
+}
+.dask-footer-container:after {
+   content: '';
+   display: block;
+   clear: both;
+}
+
+.dask-footer a {
+   font-family: 'Gustan', Helvetica, Arial, sans-serif;
+   color: #FFF;
+   text-transform: uppercase;
+   font-size: 1.18em;
+   margin-bottom: 33px;
+   padding-top: 10px;
+}
+
+.dask-footer hr {
+   margin-top: 20px;
+   margin-bottom: 5px;
+   border-top: 1px solid #EEE;
+}
+
+.footer-lower {
+   float: left;
+   width: auto;
+   padding-left: 15px;
+   padding-right: 15px;
+   font-weight: 600;
+}
+.footer-lower-first-item {
+   padding-left: 0px;
+}
+.footer-lower-last-item {
+   float: right;
+   padding-right: 0px;
+}
+
+#Copyright {
+   font-family: 'Gustan', Helvetica, Arial, sans-serif;
+   color: #FFF;
+   text-transform: uppercase;
+   font-size: 1.18em;
+   margin-bottom: 33px;
+   float: right;
+}
+
+#CHPM {
+   text-align: right;
+   margin-right: -15px;
+   margin-bottom: 14px;
+   text-decoration: none;
+}
+
+#ccLicense {
+   border-left-width: 0px;
+   border-right-width: 0px;
+   border-bottom-width: 0px;
+   border-top-width: 0px
+}
+
+/* Front tab styles */
+div.frontp {
+   max-width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 10px;
+}
+div.front-banner {
+   overflow: visible;
+   height: 100px;
+}
+div.front-banner > div.imgcon {
+   background: url("banner-2.jpg") center no-repeat;
+   background-size: cover;
+   position: absolute;
+   margin-top: -20px;
+   left: 0;
+   z-index: -1;
+   width: 100%;
+   height: inherit;
+}
+.hcon {
+   display: inline-block;
+   background-color: rgba(0, 0, 0, 0.5);
+   padding: 10px 20px 10px 20px;
+}
+.hcon > * {
+   font-weight: 200;
+   color: white;
+   margin-bottom: 0px;
+   padding-top: 0px;
+}
+.hjump {
+   margin-top: 20px;
+   max-height: 180px;
+   overflow-y: auto;
+}
+.hcon > ul {
+   margin-top: 10px;
+}
+.hcon a {
+   color: white;
+}
+
+.warning {
+   font-weight: bold;
+   color: #FF6900;
+}
+.bold {
+   font-weight: bold;
+}
+.defword {
+   font-weight: bold;
+   color: #006272;
+}
+.search-text{
+   background-color: #CCF0F9;
+}
+
+.search-box {
+   background-color: #F2FBFE;
+   border-color: #00B5E2;
+   border-radius: 0px;
+}
+
+.box {
+   height: 100%;
+   padding: 9px;
+   padding-top: 15px;
+}
+.box p {
+   margin: 0px;
+}
+
+.box-link, .box-link:hover, .box-link:visited, .box-link:link, .box-link:active {
+   text-decoration: none;
+}
+.box-link > .box {
+   width: 100%;
+   color: #3F3F3F;
+   border-top: 2px solid transparent;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+.box-link > .box:hover {
+   background-color: #3F3F3F;
+   border-image: linear-gradient(to right, #157BA3 0%, #96D602 100%) 1 1 stretch;
+}
+.box-link > .box:hover > p{
+   color: #FFFFFF;
+}
+
+.box-more {
+   background-color: #D6E8F7;
+   height: 140px;
+}
+
+.box-help {
+   background-color: #E5EFF0;
+}
+
+.box-timeout {
+   width: 100%;
+   margin-top: 10px;
+   border: 1px solid #F2F2F2;
+}
+
+img.img-report {
+   float: right;
+   height: 100px;
+   margin-left: 2em;
+}
+
+div.quote {
+   font-style: italic;
+   background-color: #D9D9D9;
+}
+
+.helpmark-con {
+   cursor: help;
+   float: right;
+   margin-top: -20px;
+   margin-right: 6px;
+}
+.helpmark-con i.glyphicon {
+   font-size: 21px;
+}
+.helpmark-con:hover i.glyphicon {
+   color: gray;
+}
+
