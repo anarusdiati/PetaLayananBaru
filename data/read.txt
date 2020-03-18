@@ -1,0 +1,9 @@
+data:
+- bounds
+- geocodes
+- geocodes1
+- pelayananRefs
+- provinsiRefs
+- rsdata
+- rslayanandata
+- RSlayanan
