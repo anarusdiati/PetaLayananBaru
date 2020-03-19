@@ -3,10 +3,8 @@ library(shiny)
 library(shinyWidgets)
 library(shinyBS)
 library(shinyjs)
-# library(shinyTree)
 library(sf)
 library(leaflet)
-library(leaflet.minicharts)
 
 # Global
 RSlayanan <- readRDS("data/RSlayanan.rds")
@@ -126,73 +124,78 @@ server <- function(input, output, session) {
   })
   
   
+  
+  data.proc <- reactive({
+    if (input$layanan != '') {
+      by.layanan <- input$layanan
+      by.loc <- input$loc
+      by.col <- input$col
+      by.jenisRS <- input$JenisRS
+      by.kelasRS <- input$KelasRS
+      by.ownerRS <- input$PenyelenggaraKat
+      
+      
+      if (input$loc != "Nasional") 
+        data.proc <- RSlayanan %>% filter(Provinsi == by.loc) 
+      else 
+        data.proc <- RSlayanan
+      
+      data.proc <- data.proc %>%
+        rename(Layanan = all_of(by.layanan)) %>%
+        filter(Layanan == 1) %>%
+        # filter(JenisRS == if (!is.null(by.jenisRS)) by.jenisRS else JenisRS, 
+        #        KelasRS == if (!is.null(by.kelasRS)) by.kelasRS else KelasRS,
+        #        PenyelenggaraKat == if (!is.null(by.ownerRS)) by.ownerRS else PenyelenggaraKat
+        # ) %>% 
+        select(Layanan, NamaRS, JenisRS, GroupRS, KelasRS, address, Penyelenggara, PenyelenggaraKat, Provinsi, KabKota, links, lon, lat)
+    })
+  
   res_mod <- callModule(
     module = selectizeGroupServer,
     id = "my-filters",
-    data = if (input$loc != "Nasional") filter(RSlayanan, Provinsi == input$loc, input$layanan == 1) else RSlayanan,
+    data = data.proc,
     vars = c("JenisRS", "KelasRS", "PenyelenggaraKat")
-    )
+  )
+  
+  data.spatial <- st_as_sf(data.proc, coords = c("lon", "lat"), 
+                           crs = 4326, agr = "constant")
+  labels <- sprintf(
+    "<strong>%s</strong><br/><em>%s %s</em><br/>%s: %s<br/>%s: %s<br/>%s: %s<br/><a href='%s'>Buka di Google Map</a>",
+    toupper(data.proc$NamaRS), data.proc$JenisRS, paste("Kelas", data.proc$KelasRS), "ALAMAT", data.proc$address, "PROVINSI", data.proc$Provinsi, "PENYELENGGARA", data.proc$Penyelenggara, data.proc$links
+  ) %>% lapply(htmltools::HTML)
+  
+  proxy <- leafletProxy("map", session, data = data.spatial) %>% clearControls() %>% clearMarkers()
+  proxy
+  if (nrow(data.proc) != 0) {
     
-    observe({
-      if (input$layanan != '') {
-        by.layanan <- input$layanan
-        by.loc <- input$loc
-        by.col <- input$col
-        by.jenisRS <- input$JenisRS
-        by.kelasRS <- input$KelasRS
-        by.ownerRS <- input$PenyelenggaraKat
-        
-        
-        data.proc <- res_mod()
-        
-        data.proc <- data.proc %>%
-          rename(Layanan = all_of(by.layanan)) %>%
-          filter(Layanan == 1) %>%
-          # filter(JenisRS == if (!is.null(by.jenisRS)) by.jenisRS else JenisRS, 
-          #        KelasRS == if (!is.null(by.kelasRS)) by.kelasRS else KelasRS,
-          #        PenyelenggaraKat == if (!is.null(by.ownerRS)) by.ownerRS else PenyelenggaraKat
-          # ) %>% 
-          select(Layanan, NamaRS, JenisRS, GroupRS, KelasRS, address, Penyelenggara, PenyelenggaraKat, Provinsi, KabKota, links, lon, lat)
-        
-        data.spatial <- st_as_sf(data.proc, coords = c("lon", "lat"), 
-                                 crs = 4326, agr = "constant")
-        labels <- sprintf(
-          "<strong>%s</strong><br/><em>%s %s</em><br/>%s: %s<br/>%s: %s<br/>%s: %s<br/><a href='%s'>Buka di Google Map</a>",
-          toupper(data.proc$NamaRS), data.proc$JenisRS, paste("Kelas", data.proc$KelasRS), "ALAMAT", data.proc$address, "PROVINSI", data.proc$Provinsi, "PENYELENGGARA", data.proc$Penyelenggara, data.proc$links
-        ) %>% lapply(htmltools::HTML)
-        
-        proxy <- leafletProxy("map", session, data = data.spatial) %>% clearControls() %>% clearMarkers()
-        proxy
-        if (nrow(data.proc) != 0) {
-          
-          
-          if (by.col != "Tidak") {bubble.pal <- colorFactor(pal, domain = unique(data.proc[, by.col]))}
-          
-          proxy <- proxy %>%
-            addCircleMarkers(
-              layerId = data.spatial$Nama_RS,
-              radius = data.spatial$Layanan*8,
-              color = if (by.col != "Tidak") bubble.pal(data.proc[, by.col]) else "#dc3977",
-              popup = labels,
-              stroke = T,
-              weight = 1,
-              fillOpacity = 0.9,
-              group = "Circle Markers"
-            )
-          
-          if (by.col != "Tidak") {
-            proxy <- proxy %>%
-            addLegend(
-              position = "bottomright",
-              pal = bubble.pal, values = data.proc[, by.col],
-              group = "Circle Markers"
-            )
-          }
-        }
-      }
-      # }
-    })
     
+    if (by.col != "Tidak") {bubble.pal <- colorFactor(pal, domain = unique(data.proc[, by.col]))}
+    
+    proxy <- proxy %>%
+      addCircleMarkers(
+        layerId = data.spatial$Nama_RS,
+        radius = data.spatial$Layanan*8,
+        color = if (by.col != "Tidak") bubble.pal(data.proc[, by.col]) else "#dc3977",
+        popup = labels,
+        stroke = T,
+        weight = 1,
+        fillOpacity = 0.9,
+        group = "Circle Markers"
+      )
+    
+    if (by.col != "Tidak") {
+      proxy <- proxy %>%
+        addLegend(
+          position = "bottomright",
+          pal = bubble.pal, values = data.proc[, by.col],
+          group = "Circle Markers"
+        )
+    }
+  }
+  }
+  # }
+})
+
 }
 
 shinyApp(ui, server)
